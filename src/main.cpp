@@ -1,5 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/GameStatsManager.hpp>
 
 using namespace geode::prelude;
 
@@ -7,6 +8,37 @@ int getCount(std::string startLabel, std::string end);
 void setupIcons();
 
 bool activated = false;
+
+class $modify(GameStatsManager) {
+	bool isItemUnlocked(UnlockType type, int id) {
+		
+		switch(type){
+			case UnlockType::Cube:
+				if(id > 142) return true;
+				break;
+			case UnlockType::Ship:
+				if(id > 51) return true;
+				break;
+			case UnlockType::Ball:
+				if(id > 43) return true;
+				break;
+			case UnlockType::Bird:
+				if(id > 35) return true;
+				break;
+			case UnlockType::Dart:
+				if(id > 35) return true;
+				break;
+			case UnlockType::Robot:
+				if(id > 26) return true;
+				break;
+			case UnlockType::Spider:
+				if(id > 17) return true;
+				break;
+		}
+
+		return GameStatsManager::isItemUnlocked(type, id);
+	} 
+};
 
 class $modify(MenuLayer) {
 
