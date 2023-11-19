@@ -1,13 +1,23 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/GameStatsManager.hpp>
+#include <Geode/modify/SimplePlayer.hpp>
 
 using namespace geode::prelude;
 
 int getCount(std::string startLabel, std::string end);
 void setupIcons();
 
-bool activated = false;
+class $modify(SimplePlayer){
+
+	bool init(int iconID){
+		if(!SimplePlayer::init(iconID)) return false;
+		
+		this->updatePlayerFrame(iconID, IconType::Cube);
+
+		return true;
+	}
+};
 
 class $modify(GameStatsManager) {
 	bool isItemUnlocked(UnlockType type, int id) {
@@ -45,10 +55,7 @@ class $modify(MenuLayer) {
     bool init() {
         if(!MenuLayer::init()) return false;
 
-		if(!activated){
-			setupIcons();
-			activated = true;
-		}
+		setupIcons();
 
 		return true;
     } 
@@ -118,7 +125,7 @@ void setupIcons() {
 	std::vector<unsigned char> shipBytes = intToBytes(shipCount);
 
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1E6DEF), { 0xB8, shipBytes[0], shipBytes[1], shipBytes[2], shipBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F7FF6), { 0xBa, shipBytes[0], shipBytes[1], shipBytes[2], shipBytes[3] });
+	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F7FF6), { 0xBA, shipBytes[0], shipBytes[1], shipBytes[2], shipBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12C6D1), { 0xc7, 0x44, 0x24, 0x14, shipBytes[0], shipBytes[1], shipBytes[2], shipBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12B0CA), { 0xc7, 0x44, 0x24, 0x1c, shipBytes[0], shipBytes[1], shipBytes[2], shipBytes[3] });
 
