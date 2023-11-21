@@ -12,9 +12,8 @@ class $modify(SimplePlayer){
 
 	bool init(int iconID){
 		if(!SimplePlayer::init(iconID)) return false;
-		
+	
 		this->updatePlayerFrame(iconID, IconType::Cube);
-
 		return true;
 	}
 };
@@ -138,23 +137,18 @@ void setupIcons() {
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F83A6), { 0xba, ballBytes[0], ballBytes[1], ballBytes[2], ballBytes[3] });
 
 	log::info("UFO count: " + std::to_string(ufoCount));
-
+ 
 	std::vector<unsigned char> ufoBytes = intToBytes(ufoCount);
 
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x22DA45), { 0xB9, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x24A18F), { 0xB8, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x24B210), { 0xB8, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F81A6), { 0xBA, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12B134), { 0xc7, 0x44, 0x24, 0x1c, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12C704), { 0xc7, 0x44, 0x24, 0x14, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x25612A), { 0xc7, 0x84, 0x24, 0x28, 0x0a, 0x00, 0x00, ufoBytes[0], ufoBytes[1], ufoBytes[2], ufoBytes[3] });
 
 	log::info("Wave count: " + std::to_string(waveCount));
 
 	std::vector<unsigned char> waveBytes = intToBytes(waveCount);
 
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x128568), { 0xB8, waveBytes[0], waveBytes[1], waveBytes[2], waveBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x142762), { 0xBB, waveBytes[0], waveBytes[1], waveBytes[2], waveBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F8586), { 0xBA, waveBytes[0], waveBytes[1], waveBytes[2], waveBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12B169), { 0xC7, 0x44, 0x24, 0x1C, waveBytes[0], waveBytes[1], waveBytes[2], waveBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12C71C), { 0xC7, 0x44, 0x24, 0x14, waveBytes[0], waveBytes[1], waveBytes[2], waveBytes[3] });
@@ -165,13 +159,10 @@ void setupIcons() {
 
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12B19E), { 0xC7, 0x44, 0x24, 0x1C, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12C734), { 0xC7, 0x44, 0x24, 0x14, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x255ADC), { 0xc7, 0x84, 0x24, 0x28, 0x0a, 0x00, 0x00, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F855A), { 0xba, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x20CCD5), { 0xb9, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x14673D), { 0xb8, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1F6ACD), { 0xb8, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x20900F), { 0xb9, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x20CCC3), { 0x6a, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x125F61), { 0xb9, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12880E), { 0xb9, robotBytes[0], robotBytes[1], robotBytes[2], robotBytes[3] });
 
