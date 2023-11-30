@@ -173,7 +173,6 @@ void setupIcons() {
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12B1D3), { 0xC7, 0x44, 0x24, 0x1C, spiderBytes[0], spiderBytes[1], spiderBytes[2], spiderBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x12C74C), { 0xC7, 0x44, 0x24, 0x14, spiderBytes[0], spiderBytes[1], spiderBytes[2], spiderBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x146745), { 0xba, spiderBytes[0], spiderBytes[1], spiderBytes[2], spiderBytes[3] });
-	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1553A2), { 0xC7, 0x84, 0x24, 0xC0, spiderBytes[0], spiderBytes[1], spiderBytes[2], spiderBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x1289CE), { 0xb9, spiderBytes[0], spiderBytes[1], spiderBytes[2], spiderBytes[3] });
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x126021), { 0xb9, spiderBytes[0], spiderBytes[1], spiderBytes[2], spiderBytes[3] });
 }
